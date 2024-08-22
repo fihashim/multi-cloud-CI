@@ -1,30 +1,55 @@
-# multi-cloud-CI
-This repo showcases a multi-cloud CI pipeline setup using GitHub Actions to automate installation, linting, and testing across AWS, Azure, and Google Cloud.
+# Multi-Cloud CI Pipeline with GitHub Actions
 
-The general steps across all cloud providers are as follows: 
-1. Create a repo containing Python project scaffold in Github.
-    a. Files required: 
-      - Makefile (format specific requiring tabs)
-      - Requirements.txt
-      - Python source code
-      - Python testing code 
+This repository showcases a multi-cloud CI pipeline setup using **GitHub Actions** to automate installation, linting, and testing across **AWS**, **Azure**, and **Google Cloud**.
 
-2. Navigate to cloud provider console and create a new project.
+## General Workflow
 
-3. Open up cloud provider shell (Azure/GCP only) and set project in shell.
+The following steps outline how to set up a multi-cloud CI pipeline using GitHub Actions:
 
-4. Install Python environment using `python3 -m venv ~/.envname` and activate Python environment using `source ~/.envname/bin/activate`
+### 1. Create a Repository on GitHub
+Start by creating a new repository on GitHub that will contain your Python project scaffold.
 
-5. Create ssh key in cloud provider shell using `ssh-keygen -t rsa` and click return on all prompts.
-   Run `cat /home/fi/key.pub` on printed path to view the public key and copy it.
-   Go to Githubs > Settings > SSH and GPG keys > Create new SSH key > Add copied public key > Name key.
+#### Required Files:
+- `Makefile` (format specific requiring tabs)
+- `requirements.txt`
+- `source_python.py`
+- `test_python.py`
 
-6.  Git clone repo made in Step 1 into your cloud shell.
-  
-7.  Run make all in folder of repo in cloud shell (or make [instruction] if you intend to run each component of Makefile individually)
-   
-8.  Set up a Github Actions configuration file (main.yaml) in .github/workflows/ folder. 
-   - This can be done by selecting the `Actions` tab above followed by `Setting up workflow yourself`. 
-   - The main.yaml file is format specific. Requires spaces not tabs. 
-   - Once main.yaml is created, the Github Actions workflow is automatically initiated and can be viewed under `All Workflows` and is labelled by the name given in your main.yaml file. 
+### 2. Set Up Cloud Provider Project
+Navigate to the console of your chosen cloud provider and create a new project.
 
+### 3. Cloud Shell Configuration (Azure/GCP)
+For Azure and Google Cloud, open up the cloud provider shell and set the project in the shell.
+For AWS, an EC2 instance would have to created instead. 
+
+### 4. Set Up Python Environment
+Install and activate a Python environment using the following commands:
+`python3 -m venv ~/.envname`
+`source ~/.envname/bin/activate`
+
+### 5. Generate SSH Key and Configure Github
+Create an SSH key in the cloud provider shell:
+`ssh-keygen -t rsa`
+Press enter on all prompts and view the public key using `cat` on .pub path.
+Copy the output and add it to Github under Settings > SSH & GPG keys > Create new SSH key
+
+### 6. Clone the Github Repository 
+git clone `github-repo`
+
+### 7. Run Makefile
+Navigate to repo directory in the cloud shell and run `Make all` or `Make <instruction>` if you want to run the install, lint, test steps individually. 
+
+### 8. Setup Github Actions Workflow
+Create a GitHub Actions configuration file (`main.yaml`) in the `.github/workflows/` folder.
+
+#### Steps:
+
+- Navigate to the **Actions** tab in your GitHub repository.
+- Select **Set up a workflow yourself**.
+- Configure the `main.yaml` file (ensure it uses spaces, not tabs).
+
+Once `main.yaml` is created, the GitHub Actions workflow will be automatically triggered and can be viewed under the **Actions** tab in the repository.
+
+### 9. Monitor CI Pipeline
+
+The workflow will be labeled by the name given in your `main.yaml` file and can be monitored under **All Workflows** in the **Actions** tab.
