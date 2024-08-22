@@ -2,6 +2,7 @@
 
 This repository showcases a multi-cloud CI pipeline setup using **GitHub Actions** to automate installation, linting, and testing across **AWS**, **Azure**, and **Google Cloud**.
 
+![image](https://github.com/user-attachments/assets/c98bc14d-7aa4-499c-96c2-5a59da8c5f4f) 
 ## General Workflow
 
 The following steps outline how to set up a multi-cloud CI pipeline using GitHub Actions:
