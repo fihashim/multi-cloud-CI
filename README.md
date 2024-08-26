@@ -15,6 +15,7 @@ Start by creating a new repository on GitHub that will contain your Python proje
 - `requirements.txt`
 - `source_python.py`
 - `test_python.py`
+- CI configuration file (`main.yaml`)
 
 ### 2. Set Up Cloud Provider Project
 Navigate to the console of your chosen cloud provider and create a new project.
